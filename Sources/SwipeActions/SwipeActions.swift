@@ -119,7 +119,7 @@ public struct SwipeAction<V1: View, V2: View>: ViewModifier {
                 maxLeadingOffsetIsCounted = false
                 maxLeadingOffset = .zero
                 lastLeadingWidth = .zero
-                withAnimation(.default) {
+                withAnimation(.easeInOut(duration: 0.2)) {
                     reset()
                 }
             }
@@ -225,7 +225,7 @@ public struct SwipeAction<V1: View, V2: View>: ViewModifier {
                         identifier != tag,
                         visibleButton != .none
                     {
-                        withAnimation(.default) {
+                        withAnimation(.easeInOut(duration: 0.2)) {
                             reset()
                         }
                         if offset > 0 {
@@ -237,7 +237,7 @@ public struct SwipeAction<V1: View, V2: View>: ViewModifier {
                     break;
                     
                 default:
-                    withAnimation(.default) {
+                    withAnimation(.easeInOut(duration: 0.2)) {
                         reset()
                     }
                     if offset > 0 {
@@ -294,7 +294,7 @@ public struct SwipeAction<V1: View, V2: View>: ViewModifier {
                 offset = max(min(totalSlide, maxLeadingOffset), -contentWidth)
             }
         } else {
-            withAnimation {
+            withAnimation(.easeInOut(duration: 0.2)) {
                 offset = max(min(totalSlide, maxLeadingOffset), minTrailingOffset)
             }
         }
@@ -320,7 +320,7 @@ public struct SwipeAction<V1: View, V2: View>: ViewModifier {
             translationWidth = value.translation.width
         }
         
-        withAnimation {
+        withAnimation(.easeInOut(duration: 0.2)) {
             if abs(offset) > 25 {
                 if offset > 0 {
                     visibleButton = .left(identifier)
